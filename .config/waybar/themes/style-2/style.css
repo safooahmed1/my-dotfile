@@ -1,0 +1,88 @@
+@import "../../.cache/wal/colors-waybar.css";
+
+* {
+  border: none;
+  border-radius: 0;
+  font-family: mononoki Nerd Font;
+  font-size: 13px;
+  min-height: 0;
+}
+
+window#waybar {
+  background: transparent;
+  color: white;
+}
+
+/* Workspaces */
+#workspaces {
+  background: alpha(@color0, 0.5);
+  margin-bottom: 5px;
+  margin-left: 10px;
+  border-radius: 5px;
+}
+
+#workspaces button {
+  padding: 5px 10px;
+  color: @color8;
+	border-radius: 5px;
+}
+
+#workspaces button.active {
+  color: @foreground;
+  background: @color9;
+  border-radius: 5px;
+}
+
+/* Common modules */
+#custom-date,
+#clock,
+#battery,
+#pulseaudio,
+#network {
+  background: alpha(@color0, 0.5);
+  padding: 5px 10px;
+  margin-bottom: 5px;
+}
+
+#custom-date {
+  color: @color3;
+}
+
+#custom-logo {
+  color: @foreground;
+  background: @color9;
+  border-radius: 5px;
+  margin-left: 10px;
+  margin-bottom: 5px;
+  padding-left: 10px;
+  padding-right: 5px;
+}
+
+#clock {
+  color: @foreground;
+  border-radius: 0px 5px 5px 0px;
+  margin-right: 10px;
+}
+
+#battery {
+  color: @color2;
+}
+
+#battery.charging {
+  color: #9ece6a;
+}
+
+#battery.warning:not(.charging) {
+  background-color: #f7768e;
+  color: #24283b;
+  border-radius: 5px 5px 5px 5px;
+}
+
+#network {
+  color: @color4;
+  border-radius: 5px 0px 0px 5px;
+}
+
+#pulseaudio {
+  color: @color1;
+}

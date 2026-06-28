@@ -1,0 +1,116 @@
+@import "../../.cache/wal/colors-waybar.css";
+
+* {
+  font-family: "JetBrainsMono Nerd Font", monospace;
+  font-size: 13px;
+}
+
+window#waybar {
+  background: alpha(@background, 0.85);
+  color: @foreground;
+  border-radius: 0 14px 14px 0;
+}
+
+/* ===== TOP SECTION ===== */
+
+#custom-logo {
+  font-size: 22px;
+  color: @color4;
+  padding: 16px 0 6px 0;
+}
+
+#workspaces {
+  margin-bottom: 8px;
+}
+
+#workspaces button {
+  color: @color8;
+  padding: 3px 0;
+  font-size: 13px;
+  border-radius: 0;
+}
+
+#workspaces button.active {
+  color: @color4;
+}
+
+#workspaces button.urgent {
+  color: @color1;
+}
+
+/* ===== BOTTOM SECTION ===== */
+
+#network {
+  color: @color4;
+  font-size: 16px;
+  padding: 4px 0 2px 0;
+  border-top: 1px solid alpha(@foreground, 0.12);
+}
+
+#network.disconnected {
+  color: @color1;
+}
+
+#bluetooth {
+  color: @color5;
+  font-size: 16px;
+  padding: 2px 0;
+}
+
+#bluetooth.off {
+  color: @color8;
+}
+
+#pulseaudio {
+  color: @color6;
+  font-size: 16px;
+  padding: 2px 0;
+}
+
+#pulseaudio.muted {
+  color: @color8;
+}
+
+#cpu {
+  color: @color5;
+  font-size: 16px;
+  padding: 2px 0;
+}
+
+#memory {
+  color: @color3;
+  font-size: 16px;
+  padding: 2px 0;
+}
+
+#battery {
+  color: @color2;
+  font-size: 13px;
+  padding: 2px 0;
+}
+
+#battery.charging {
+  color: @color10;
+}
+
+#battery.critical:not(.charging) {
+  color: @color1;
+}
+
+/* ===== CLOCK (bottom anchor) ===== */
+
+#clock {
+  padding: 8px 0 14px 0;
+  font-size: 14px;
+  font-weight: 700;
+  color: @foreground;
+  border-top: 1px solid alpha(@foreground, 0.12);
+  margin-top: 4px;
+}
+
+tooltip {
+  background: @color0;
+  color: @foreground;
+  border-radius: 8px;
+  padding: 6px 10px;
+}

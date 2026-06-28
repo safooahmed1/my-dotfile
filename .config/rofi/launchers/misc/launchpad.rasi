@@ -1,0 +1,131 @@
+/*
+ * Rofi Theme - Launchpad (Pywal)
+ * Clean grid launcher using shared color variables
+ */
+
+configuration {
+    font:                   "JetBrainsMono Nerd Font Mono 10";
+    show-icons:             true;
+    icon-theme:             "WhiteSur";
+    display-drun:           "";
+    drun-display-format:    "{name}";
+    disable-history:        false;
+    sidebar-mode:           false;
+}
+
+@import "/home/safooahmed/.config/rofi/shared/color.rasi"
+@import "/home/safooahmed/.config/rofi/shared/fonts.rasi"
+
+window {
+    transparency:           "real";
+    background-color:       @background;
+    text-color:             @foreground;
+    border:                 0px;
+    border-color:           @border;
+    border-radius:          0px;
+    width:                  100%;
+    height:                 100%;
+    cursor:                 "default";
+}
+
+prompt {
+    enabled:                true;
+    padding:                0.30% 1% 0% -0.5%;
+    background-color:       transparent;
+    text-color:             @selected;
+    font:                   "JetBrainsMono Nerd Font Mono 12";
+}
+
+entry {
+    background-color:       transparent;
+    text-color:             @foreground;
+    placeholder-color:      @foreground;
+    expand:                 true;
+    horizontal-align:       0;
+    placeholder:            "Search";
+    padding:                6px 0px;
+    blink:                  true;
+}
+
+inputbar {
+    children:               [ prompt, entry ];
+    background-color:       @background;
+    text-color:             @foreground;
+    expand:                 false;
+    border:                 1px;
+    border-radius:          10px;
+    border-color:           @selected;
+    margin:                 0% 28% 0% 28%;
+    padding:                6px 14px;
+    spacing:                8px;
+}
+
+listview {
+    background-color:       transparent;
+    columns:                7;
+    lines:                  4;
+    spacing:                12px;
+    cycle:                  false;
+    dynamic:                true;
+    layout:                 vertical;
+    padding:                20px 0px;
+}
+
+mainbox {
+    background-color:       transparent;
+    border:                 0px;
+    border-radius:          0px;
+    children:               [ inputbar, listview ];
+    spacing:                40px;
+    padding:                6% 8% 6% 8%;
+}
+
+element {
+    background-color:       transparent;
+    text-color:             @foreground;
+    orientation:            vertical;
+    border-radius:          12px;
+    padding:                10px 6px;
+    spacing:                6px;
+    cursor:                 pointer;
+}
+
+element normal.normal {
+    background-color:       transparent;
+    text-color:             @foreground;
+}
+
+element selected.normal {
+    background-color:       @background-alt;
+    text-color:             @foreground;
+    border:                 1px;
+    border-color:           @selected;
+}
+
+element-icon {
+    background-color:       transparent;
+    text-color:             inherit;
+    horizontal-align:       0.5;
+    vertical-align:         0.5;
+    size:                   72px;
+    border-radius:          14px;
+}
+
+element-text {
+    background-color:       transparent;
+    text-color:             inherit;
+    highlight:              inherit;
+    expand:                 true;
+    horizontal-align:       0.5;
+    vertical-align:         0.5;
+    margin:                 4px 2px 0px 2px;
+}
+
+error-message {
+    padding:                15px;
+    border:                 1px;
+    border-radius:          12px;
+    border-color:           @border;
+    background-color:       @background;
+    text-color:             @foreground;
+}

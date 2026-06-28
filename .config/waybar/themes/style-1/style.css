@@ -1,0 +1,252 @@
+/* Waybar Styling – Premium Glassmorphism Theme */
+@import "../../.cache/wal/colors-waybar.css";
+
+/* Global reset and smooth transitions */
+* {
+  margin: 0;
+  padding: 0;
+  border: none;
+  font-family: "JetBrainsMono Nerd Font", monospace;
+  font-weight: 600;
+  font-size: 13px;
+  min-height: 0;
+  opacity: 1;
+  transition: all 0.2s ease;
+  letter-spacing: 0.3px;
+}
+
+/* Waybar container – glassmorphism backdrop */
+window#waybar {
+  background: transparent;
+  color: @foreground;
+  border-radius: 12px;
+  margin: 4px;
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.25);
+}
+
+/* ------------------------------------------------------------------ */
+/* Workspaces */
+#workspaces button {
+  padding: 2px 10px;
+  color: @color8;
+  background: alpha(@color0, 0.5);
+  border-radius: 10px;
+  margin: 0 3px;
+  transition: background 0.3s, transform 0.2s;
+}
+
+#workspaces button.active {
+  color: @foreground;
+  background: linear-gradient(45deg, @color2, @color3);
+  box-shadow: 0 0 8px alpha(@color2, 0.6);
+}
+
+#workspaces button:hover {
+  background: alpha(@color6, 0.4);
+}
+
+#workspaces button.urgent {
+  color: @foreground;
+  background: @color9;
+  animation: blink 1s infinite, pulse 2s infinite;
+}
+
+/* ------------------------------------------------------------------ */
+/* Window Title */
+#window {
+  color: @color7;
+  padding: 0 12px;
+  background: alpha(@color0, 0.5);
+  border-radius: 12px;
+  margin: 0 6px;
+  box-shadow: inset 0 0 6px alpha(@color0, 0.2);
+}
+
+/* ------------------------------------------------------------------ */
+/* Groups – Hardware & Control */
+#group-hardware,
+#group-control {
+  background-color: alpha(@color0, 0.45);
+  border: 1px solid alpha(@color8, 0.35);
+  border-radius: 15px;
+  padding: 0 10px;
+  margin: 0 5px;
+}
+
+#group-hardware>#custom-icon,
+#group-control>#custom-icon {
+  color: @color1;
+  border-radius: 10px;
+  padding: 0 6px;
+}
+
+#group-hardware:hover>#custom-icon,
+#group-control:hover>#custom-icon {
+  background: alpha(@color6, 0.3);
+}
+
+/* ------------------------------------------------------------------ */
+/* Common module styling – unified look */
+#custom-fcitx5,
+#custom-notification,
+#clock,
+#battery,
+#custom-pomodoro,
+#pulseaudio,
+#backlight,
+#network,
+#bluetooth,
+#temperature,
+#cpu,
+#memory,
+#disk,
+#custom-gpu {
+  padding: 0 12px;
+  border-radius: 12px;
+  background: alpha(@color0, 0.5);
+  margin: 0 3px;
+  box-shadow: 0 2px 6px alpha(@color0, 0.25);
+  transition: background 0.25s, transform 0.2s;
+}
+
+#custom-fcitx5:hover,
+#custom-notification:hover,
+#clock:hover,
+#battery:hover,
+#pulseaudio:hover,
+#backlight:hover,
+#network:hover,
+#bluetooth:hover,
+#temperature:hover,
+#cpu:hover,
+#memory:hover,
+#disk:hover,
+#custom-gpu:hover {
+  background: alpha(@color6, 0.35);
+}
+
+/* ------------------------------------------------------------------ */
+/* Tray */
+#tray {
+  margin-right: 5px;
+  padding: 0 10px;
+  border-radius: 12px;
+  background: alpha(@color0, 0.5);
+  box-shadow: 0 2px 6px alpha(@color0, 0.25);
+}
+
+#tray>* {
+  margin: 0 4px;
+}
+
+/* ------------------------------------------------------------------ */
+/* Custom logo */
+#custom-logo {
+  margin-left: 5px;
+  font-size: 16px;
+  color: @color1;
+  padding: 0 10px;
+  border-radius: 10px;
+  background: alpha(@color0, 0.5);
+  transition: background 0.3s, transform 0.2s;
+}
+
+#custom-logo:hover {
+  background: alpha(@color6, 0.35);
+}
+
+/* ------------------------------------------------------------------ */
+/* Specific module tweaks */
+#network {
+  color: @color3;
+}
+
+#network.disconnected {
+  color: @color1;
+  background: alpha(@color9, 0.4);
+}
+
+#bluetooth {
+  color: @color5;
+}
+
+#bluetooth.disconnected {
+  color: @color8;
+}
+
+#pulseaudio {
+  color: @color7;
+}
+
+#pulseaudio.muted {
+  color: @foreground;
+  background: alpha(@color9, 0.4);
+}
+
+#pulseaudio.microphone {
+  color: @color13;
+}
+
+#pulseaudio.microphone.source-muted {
+  color: @foreground;
+  background: alpha(@color9, 0.4);
+}
+
+#battery {
+  color: @color2;
+}
+
+#battery.charging,
+#battery.plugged {
+  color: @color14;
+  background: alpha(@color4, 0.3);
+}
+
+#battery.critical:not(.charging) {
+  color: @foreground;
+  background: @color1;
+  animation: blink 1s infinite, pulse 2s infinite;
+}
+
+#temperature {
+  color: @color4;
+}
+
+#temperature.critical {
+  color: @foreground;
+  background: @color1;
+}
+
+#cpu {
+  color: @color4;
+}
+
+#memory {
+  color: @color6;
+}
+
+#disk {
+  color: @color14;
+}
+
+#custom-gpu {
+  color: @color3;
+}
+
+/* ------------------------------------------------------------------ */
+/* Animations */
+@keyframes blink {
+  0% {
+    opacity: 1;
+  }
+
+  50% {
+    opacity: 0.3;
+  }
+
+  100% {
+    opacity: 1;
+  }
+}
+
+@keyframes pulse {}

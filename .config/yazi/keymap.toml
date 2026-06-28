@@ -1,0 +1,14 @@
+[[mgr.prepend_keymap]]
+on   = [ "K" ]
+run  = "shell 'kitty --detach'"
+desc = "Open Kitty in current directory"
+
+[[mgr.prepend_keymap]]
+on   = [ "O", "c" ]
+run  = "shell 'code .' --orphan"
+desc = "Open in VS Code"
+
+[[mgr.prepend_keymap]]
+on   = [ "O", "n" ]
+run  = "shell 'nvim .' --block"
+desc = "Open in NeoVim"

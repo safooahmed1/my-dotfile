@@ -1,0 +1,115 @@
+@import "../../.cache/wal/colors-waybar.css";
+
+* {
+  font-family: "JetBrainsMono Nerd Font", monospace;
+  font-size: 13px;
+  min-height: 0;
+}
+
+window#waybar {
+  background: alpha(@background, 0.9);
+  color: @foreground;
+  border-radius: 0 0 14px 14px;
+}
+
+/* ===== TABS (Workspaces) ===== */
+
+#workspaces {
+  margin-left: 4px;
+}
+
+#workspaces button {
+  background: transparent;
+  color: @color8;
+  padding: 0 14px;
+  border-radius: 8px 8px 0 0;
+  border-bottom: 2px solid transparent;
+  transition: all 0.2s ease;
+  min-height: 0;
+}
+
+#workspaces button:hover {
+  background: alpha(@color6, 0.15);
+  color: @foreground;
+}
+
+#workspaces button.active {
+  color: @foreground;
+  border-bottom: 2px solid @color4;
+  background: alpha(@color0, 0.3);
+}
+
+#workspaces button.urgent {
+  color: @color1;
+  border-bottom: 2px solid @color1;
+}
+
+/* ===== MEDIA PLAYER ===== */
+
+#mpris {
+  padding: 0 16px;
+  font-size: 13px;
+  color: @color7;
+}
+
+/* ===== SYSTEM ICONS ===== */
+
+#network {
+  color: @color4;
+  font-size: 16px;
+  padding: 0 7px;
+}
+
+#network.disconnected {
+  color: @color1;
+}
+
+#bluetooth {
+  color: @color5;
+  font-size: 16px;
+  padding: 0 7px;
+}
+
+#bluetooth.off {
+  color: @color8;
+}
+
+#pulseaudio {
+  color: @color6;
+  font-size: 16px;
+  padding: 0 7px;
+}
+
+#pulseaudio.muted {
+  color: @color8;
+}
+
+#battery {
+  color: @color2;
+  font-size: 13px;
+  padding: 0 7px;
+}
+
+#battery.charging {
+  color: @color10;
+}
+
+#battery.critical:not(.charging) {
+  color: @color1;
+}
+
+/* ===== CLOCK ===== */
+
+#clock {
+  padding: 0 10px 0 7px;
+  font-size: 13px;
+  font-weight: 700;
+  color: @foreground;
+}
+
+tooltip {
+  background: @color0;
+  color: @foreground;
+  border-radius: 8px;
+  padding: 6px 10px;
+}

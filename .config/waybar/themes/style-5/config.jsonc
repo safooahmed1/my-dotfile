@@ -1,0 +1,106 @@
+{
+  "layer": "top",
+  "position": "left",
+  "width": 52,
+
+  "modules-left": [
+    "custom/logo",
+    "hyprland/workspaces"
+  ],
+
+  "modules-right": [
+    "network",
+    "bluetooth",
+    "pulseaudio",
+    "cpu",
+    "memory",
+    "battery",
+    "clock"
+  ],
+
+  "hyprland/workspaces": {
+    "disable-scroll": false,
+    "all-outputs": true,
+    "on-click": "activate",
+    "format": "{icon}",
+    "format-icons": {
+      "1": "1",
+      "2": "2",
+      "3": "3",
+      "4": "4",
+      "5": "5",
+      "6": "6",
+      "7": "7",
+      "8": "8",
+      "9": "9",
+      "10": "10"
+    }
+  },
+
+  "custom/logo": {
+    "format": "",
+    "tooltip": false,
+    "on-click": "~/.config/rofi/launchers/misc/launcher.sh &"
+  },
+
+  "clock": {
+    "format": "{:%I:%M\n%p}",
+    "format-alt": "{:%a\n%d %b}",
+    "tooltip-format": "<big>{:%Y %B}</big>\n<tt><small>{calendar}</small></tt>",
+    "interval": 30
+  },
+
+  "battery": {
+    "states": { "warning": 20, "critical": 10 },
+    "format": "{icon}  {capacity}%",
+    "format-icons": {
+      "charging": ["󰢜", "󰂆", "󰂇", "󰂈", "󰢝", "󰂉", "󰢞", "󰂊", "󰂋", "󰂅"],
+      "default": ["󰁺", "󰁻", "󰁼", "󰁽", "󰁾", "󰁿", "󰂀", "󰂁", "󰂂", "󰁹"]
+    },
+    "format-charging": "󰂄  {capacity}%",
+    "format-full": "󰁹",
+    "interval": 5,
+    "tooltip-format": "{time}"
+  },
+
+  "network": {
+    "format-wifi": "󰤥",
+    "format-ethernet": "󰈀",
+    "format-disconnected": "󰤭",
+    "tooltip-format-wifi": "{essid} ({signalStrength}%)",
+    "tooltip-format-disconnected": "Disconnected",
+    "on-click": "~/.config/rofi/wifi/wifi.sh"
+  },
+
+  "bluetooth": {
+    "format": "󰂯",
+    "format-connected": "󰂱",
+    "format-off": "󰂲",
+    "tooltip-format": "{device_alias}",
+    "on-click": "bluetoothctl power $(bluetoothctl show | grep -q 'Powered: yes' && echo off || echo on)"
+  },
+
+  "pulseaudio": {
+        "format": "{icon}",
+        "format-muted": "󰝟",
+        "format-icons": {
+          "default": ["󰕿", "󰖀", "󰕾"]
+        },
+    "on-click": "wpctl set-mute @DEFAULT_SINK@ toggle",
+    "on-scroll-up": "wpctl set-volume -l 1 @DEFAULT_SINK@ 5%+",
+    "on-scroll-down": "wpctl set-volume @DEFAULT_SINK@ 5%-",
+    "tooltip-format": "{volume}%"
+  },
+
+  "cpu": {
+    "interval": 5,
+    "format": "󰍛",
+    "tooltip-format": "CPU: {}%"
+  },
+
+  "memory": {
+    "interval": 5,
+    "format": "",
+    "tooltip-format": "RAM: {}%"
+  }
+}

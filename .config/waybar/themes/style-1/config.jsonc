@@ -1,0 +1,254 @@
+{
+  "layer": "top",
+  "position": "top",
+  "margin": "1 0 0 0",
+  "mod": "dock",
+  "exclusive": true,
+  "passthrough": false,
+  "gtk-layer-shell": true,
+  "height": 28,
+  "spacing": 8,
+
+  "modules-left": ["custom/logo", "hyprland/workspaces"],
+
+  "modules-center": ["custom/pomodoro","group/hardware", "clock"],
+
+  "modules-right": [
+    "custom/notification",
+    "battery",
+    "pulseaudio",
+    "network",
+    "group/control",
+    "custom/fcitx5",
+    "tray",
+  ],
+
+  "hyprland/workspaces": {
+    "disable-scroll": false,
+    "all-outputs": true,
+    "on-click": "activate",
+    "format": "{icon}",
+    "format-icons": {
+      "1": "1",
+      "2": "2",
+      "3": "3",
+      "4": "4",
+      "5": "5",
+      "6": "6",
+      "7": "7",
+      "8": "8",
+      "9": "9",
+      "10": "10",
+    },
+    "persistent_workspaces": {
+      "1": [],
+      "2": [],
+      "3": [],
+      "4": [],
+      "5": [],
+      "6": [],
+      "7": [],
+      "8": [],
+      "9": [],
+      "10": [],
+    },
+  },
+
+  // يكتب اسم البرنامج اللي معمول عليه فوكس
+  // "hyprland/window": {
+  //   "separate-outputs": true,
+  //   "max-length": 50,
+  //   "icon": true, // يعرض أيقونة التطبيق لو متوفر
+  //   "icon-size": 16,
+  // },
+
+  "custom/notification": {
+    "tooltip": false,
+    "format": "",
+    "on-click": "swaync-client -t",
+  },
+
+  "custom/pomodoro": {
+	"format": "󱎫 {time}",
+	"return-type": "json",
+	"exec": "waybar-module-pomodoro",
+	"on-click": "waybar-module-pomodoro toggle",
+	"on-click-right": "waybar-module-pomodoro reset",
+  },
+
+  "tray": {
+    "icon-size": 16,
+    "spacing": 8,
+  },
+
+  "group/control": {
+    "orientation": "horizontal",
+    "drawer": {
+      "transition-duration": 500,
+      "children-class": "not-memory",
+      "transition-left-to-right": false,
+    },
+    "modules": [
+      "custom/icon",
+      "backlight",
+      "pulseaudio#microphone",
+      "bluetooth",
+    ],
+  },
+
+  "custom/fcitx5": {
+    "exec": "fcitx5-remote -n | sed -e 's/keyboard-us/EN/' -e 's/keyboard-eg/AR/'",
+    "interval": 1,
+    "format": "<span>󰗊 </span>{}",
+    "on-click": "fcitx5-remote -t",
+    "on-click-right": "fcitx5-configtool",
+    "tooltip": false,
+  },
+
+  "clock": {
+    "format": "{:%d %a %I:%M %p}",
+    "format-alt": "󰸗  {:%a, %d %b %Y}",
+    "tooltip-format": "<big>{:%Y %B}</big>\n<tt><small>{calendar}</small></tt>",
+  },
+
+  "custom/logo": {
+    "format": "  ",
+    "tooltip": false,
+    "on-click": "~/.config/rofi/launchers/misc/launcher.sh &",
+  },
+
+  "network": {
+    "format-wifi": "{icon} {essid}",
+    "format-icons": ["󰤯 ", "󰤟 ", "󰤢 ", "󰤥 ", "󰤨 "],
+    "format-ethernet": "󰈀",
+    "format-linked": "{ifname} (No IP) ",
+    "format-disconnected": "󰤭 ",
+    // "on-click": "nm-connection-editor",
+    "on-click": " ~/.config/rofi/wifi/wifi.sh",
+    "tooltip-format": "{bandwidthDownBits} 󰓅 {bandwidthUpBits}",
+  },
+
+  "backlight": {
+    "device": "intel_backlight",
+    "format": "{icon} {percent}%",
+    "format-icons": ["󰃞", "󰃟", "󰃠"],
+    "on-scroll-up": "brightnessctl set 10%+",
+    "on-scroll-down": "brightnessctl set 10%-",
+    "smooth-scrolling-threshold": 2,
+  },
+
+  "battery": {
+    "states": { "warning": 20, "critical": 10 },
+    "format": "{icon} {capacity}%",
+    "format-icons": {
+      "charging": ["󰢜", "󰂆", "󰂇", "󰂈", "󰢝", "󰂉", "󰢞", "󰂊", "󰂋", "󰂅"],
+      "plugged": ["󰁺", "󰁻", "󰁼", "󰁽", "󰁾", "󰁿", "󰂀", "󰂁", "󰂂", "󰁹"],
+      "default": ["󰁺", "󰁻", "󰁼", "󰁽", "󰁾", "󰁿", "󰂀", "󰂁", "󰂂", "󰁹"],
+    },
+    "format-full": "󰁹 Full",
+    "interval": 5,
+    "format-alt": "{icon} {time}",
+    "format-time": "{H}h {M}m",
+    "tooltip": false,
+  },
+
+  "bluetooth": {
+    "format": "󰂯",
+    "format-off": "󰂲 Bluetooth Off",
+    "format-connected": "󰂱 {device_alias}",
+    "tooltip-format": "{controller_alias}\t{controller_address}",
+    "tooltip-format-connected": "{controller_alias}\t{controller_address}\n\n{device_enumerate}",
+    "tooltip-format-enumerate-connected": "{device_alias}\t{device_address}",
+    "on-click": "~/.config/rofi/bluetooth/blt-connect.sh",
+    "on-click-right": "bluetoothctl power $(bluetoothctl show | grep -q 'Powered: yes' && echo off || echo on)",
+    "max-length": 15,
+  },
+
+  "pulseaudio": {
+    "format": "{icon} {volume}%",
+    "format-bluetooth": "󰂰 {icon} {volume}%",
+    "format-muted": "󰝟 Muted",
+    "format-icons": {
+      "headphone": "",
+      "hands-free": "",
+      "headset": "",
+      "phone": "",
+      "portable": "",
+      "car": "",
+      "default": ["󰕿", "󰖀", "󰕾", ""],
+    },
+    "on-click": "wpctl set-mute @DEFAULT_SINK@ toggle",
+    "on-click-right": "pavucontrol",
+    "on-scroll-up": "wpctl set-volume -l 1 @DEFAULT_SINK@ 5%+",
+    "on-scroll-down": "wpctl set-volume @DEFAULT_SINK@ 5%-",
+    "scroll-step": 5,
+    "tooltip-format": "Volume: {volume}%",
+  },
+
+  "pulseaudio#microphone": {
+    "format": "{format_source}",
+    "format-source": "󰍬 {volume}%",
+    "format-source-muted": "󰍭 Muted",
+    "on-click": "wpctl set-mute @DEFAULT_SOURCE@ toggle",
+    "on-click-right": "pavucontrol",
+    "on-scroll-up": "wpctl set-volume -l 1 @DEFAULT_SOURCE@ 5%+",
+    "on-scroll-down": "wpctl set-volume @DEFAULT_SOURCE@ 5%-",
+    "tooltip": false,
+  },
+
+  "group/hardware": {
+    "orientation": "horizontal",
+    "drawer": {
+      "transition-duration": 500,
+      "children-class": "not-memory",
+      "transition-left-to-right": false,
+    },
+    "modules": [
+      "custom/icon",
+      "memory",
+      "disk",
+      "cpu",
+      "custom/gpu",
+      "temperature",
+    ],
+  },
+
+  "cpu": {
+    "interval": 5,
+    "format": "󰍛 {}%",
+    "max-length": 10,
+  },
+
+  "memory": {
+    "interval": 5,
+    "format": " {}%",
+    "max-length": 10,
+  },
+
+  "disk": {
+    "interval": 30,
+    "format": "󰋊 {}%",
+    "max-length": 10,
+    "path": "/",
+  },
+
+  "temperature": {
+    "critical-threshold": 80,
+    "interval": 5,
+    "format": "{icon} {temperatureC}°",
+    "format-icons": ["", "", ""],
+    "max-length": 10,
+  },
+
+  "custom/gpu": {
+    "interval": 5,
+    "exec": "intel_gpu_top -J -s 1 -n 1 | jq '.[0].engines.\"Render/3D\".busy' | awk '{printf \"%d\\n\", $1}'",
+    "format": "󰾲 {}%",
+    "max-length": 10,
+  },
+
+  "custom/icon": {
+    "format": "󰍛 ",
+    "tooltip": false,
+  },
+}
